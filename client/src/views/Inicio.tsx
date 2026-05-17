@@ -3,7 +3,7 @@ import { TbReportSearch } from "react-icons/tb";
 
 import { 
   fondoPrimary, fondoSecondary, 
-  perfilPrimary, perfilSecondary 
+  perfilPrimary
 } from "../assets";
 
 import "aos/dist/aos.css";

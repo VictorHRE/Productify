@@ -32,6 +32,27 @@ productify-main/
 - **ORM**: Sequelize para la gestión de la base de datos.
 - **Base de datos**: SQL Server.
 
+## Variables de entorno del backend
+
+Configura un archivo `server/.env` con estos valores mínimos:
+
+```env
+SERVER_PORT=3000
+CLIENT_PORT=http://localhost:5173
+DB_HOST=localhost
+DB_DATABASE=productify
+DB_USUARIO=sa
+DB_PASSWORD=tu_password
+```
+
+## API principal
+
+- `POST /api/auth/login` para autenticación.
+- `GET /api/categoria/obtener-categorias` para listar categorías.
+- `GET /api/categoria/obtener-categoria/:id` para obtener una categoría.
+- `POST /api/categoria/registrar-categoria` para crear una categoría.
+- `PUT /api/categoria/actualizar-categoria/:id` para actualizar una categoría.
+
 ## Requisitos previos
 
 - Node.js (v16 o superior)
