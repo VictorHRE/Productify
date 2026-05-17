@@ -1,0 +1,94 @@
+DROP DATABASE IF EXISTS productos;
+CREATE DATABASE productos;
+USE productos;
+
+CREATE TABLE cargos
+(
+  id_cargo INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+  nombre_cargo NVARCHAR(50) NOT NULL UNIQUE,
+  createdAt DATETIME NOT NULL DEFAULT GETDATE(),
+  updatedAt DATETIME NOT NULL DEFAULT GETDATE()
+);
+
+CREATE TABLE usuarios
+(
+  id_usuario INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+  nombre_usuario NVARCHAR(30) NOT NULL,
+  apellidos_usuario NVARCHAR(30) NOT NULL,
+  sexo_usuario CHAR(1) NOT NULL,
+  cedula_usuario CHAR(16) NOT NULL UNIQUE,
+  departamento_usuario NVARCHAR(30) NULL,
+  direccion_usuario NVARCHAR(100) NULL,
+  correo_usuario NVARCHAR(100) NOT NULL UNIQUE,
+  contra_usuario NVARCHAR(100) NOT NULL,
+  estado_usuario NVARCHAR(10) DEFAULT 'activo',
+  id_cargo_fk INT NOT NULL,
+  createdAt DATETIME NOT NULL DEFAULT GETDATE(),
+  updatedAt DATETIME NOT NULL DEFAULT GETDATE(),
+
+  FOREIGN KEY (id_cargo_fk) REFERENCES cargos(id_cargo)
+);
+
+CREATE TABLE telefonos
+(
+  id_telefono INT PRIMARY KEY IDENTITY(1,1),
+  operador_telefono NVARCHAR(10) NULL,
+  numero_telefono NVARCHAR(15) NULL UNIQUE,
+  id_usuario_fk INT NOT NULL,
+  createdAt DATETIME NOT NULL DEFAULT GETDATE(),
+  updatedAt DATETIME NOT NULL DEFAULT GETDATE(),
+
+  FOREIGN KEY (id_usuario_fk) REFERENCES usuarios (id_usuario)
+);
+
+CREATE TABLE proveedores
+(
+  id_proveedor INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+  nombre_proveedor NVARCHAR(30) NOT NULL,
+  email_proveedor NVARCHAR(30) NOT NULL UNIQUE,
+  telefono_proveedor NVARCHAR(15) NOT NULL UNIQUE,
+  direccion_proveedor NVARCHAR(100) NULL,
+  estado_proveedor NVARCHAR(10) DEFAULT 'activo',
+  createdAt DATETIME NOT NULL DEFAULT GETDATE(),
+  updatedAt DATETIME NOT NULL DEFAULT GETDATE()
+);
+
+CREATE TABLE categorias
+(
+  id_categoria INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+  nombre_categoria NVARCHAR(50) NOT NULL,
+  descripcion_categoria NVARCHAR(100) NULL,
+  estado_categoria NVARCHAR(10) DEFAULT 'activo',
+  createdAt DATETIME NOT NULL DEFAULT GETDATE(),
+  updatedAt DATETIME NOT NULL DEFAULT GETDATE()
+);
+
+CREATE TABLE productos
+(
+  id_producto INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+  nombre_producto NVARCHAR(50) NOT NULL,
+  descripcion_producto NVARCHAR(100) NULL,
+  precio_compra DECIMAL(10, 2) NOT NULL,
+  precio_venta DECIMAL(10, 2) NOT NULL,
+  stock_producto INT NOT NULL,
+  fecha_vencimiento_producto DATE NULL,
+  imagen_producto NVARCHAR(255) NULL,
+  estado_producto NVARCHAR(10) DEFAULT 'activo',
+  id_categoria_fk INT NULL,
+  id_usuario_fk INT NOT NULL,
+  createdAt DATETIME NOT NULL DEFAULT GETDATE(),
+  updatedAt DATETIME NOT NULL DEFAULT GETDATE(),
+
+  FOREIGN KEY (id_categoria_fk) REFERENCES categorias (id_categoria),
+  FOREIGN KEY (id_usuario_fk) REFERENCES usuarios (id_usuario)
+);
+
+CREATE TABLE productos_proveedores
+(
+  id_producto_proveedor INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+  id_proveedor_fk INT NULL,
+  id_producto_fk INT NOT NULL,
+
+  FOREIGN KEY (id_proveedor_fk) REFERENCES proveedores (id_proveedor),
+  FOREIGN KEY (id_producto_fk) REFERENCES productos (id_producto)
+);

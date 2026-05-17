@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.categoriaRouter = void 0;
+const infrastructure_1 = require("@categoria/infrastructure");
+const application_1 = require("@categoria/application");
+const presentation_1 = require("@categoria/presentation");
+const categoriaFinderRepository = new infrastructure_1.CategoriaFinderRepositorySequelize();
+const categoriaCRUDRepository = new infrastructure_1.CategoriaCrudRepositorySequelize();
+const categoriaRepository = new infrastructure_1.CategoriaRepository(categoriaFinderRepository, categoriaCRUDRepository);
+const categoriaFinderService = new application_1.CategoriaFinderService(categoriaRepository);
+const categoriaCRUDService = new application_1.CategoriaCrudService(categoriaRepository);
+const categoriaService = new application_1.CategoriaService(categoriaFinderService, categoriaCRUDService);
+const categoriaController = new presentation_1.CategoriaController(categoriaService);
+const categoriaRouter = (0, presentation_1.categoriaBuildRouter)(categoriaController);
+exports.categoriaRouter = categoriaRouter;

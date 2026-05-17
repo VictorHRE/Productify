@@ -1,0 +1,116 @@
+{
+  "files.associations": {
+    "*.db": "sql"
+  },
+  "material-icon-theme.files.associations": {
+    "*.interface.ts": "typescript-def"
+  },
+  "material-icon-theme.folders.associations": {
+    "domain": "element",
+    "infrastructure": "serverless"
+  },
+  "material-icon-theme.folders.customClones": [
+    // Frontend
+    {
+      "name": "navbar-custom",
+      "base": "components",
+      "color": "blue-500",
+      "lightColor": "blue-700",
+      "folderNames": ["navbar"]
+    },
+    {
+      "name": "footer-custom",
+      "base": "components",
+      "color": "orange-500",
+      "lightColor": "yellow-400",
+      "folderNames": ["footer"]
+    },
+    {
+      "name": "form-custom",
+      "base": "components",
+      "color": "teal-500",
+      "lightColor": "teal-300",
+      "folderNames": ["form"]
+    },
+    {
+      "name": "header-custom",
+      "base": "components",
+      "color": "red-500",
+      "lightColor": "red-300",
+      "folderNames": ["header"]
+    },
+    {
+      "name": "sidebar-custom",
+      "base": "components",
+      "color": "cyan-500",
+      "lightColor": "cyan-700",
+      "folderNames": ["sidebar"]
+    },
+    {
+      "name": "dashboard-custom",
+      "base": "components",
+      "color": "pink-600",
+      "lightColor": "pink-800",
+      "folderNames": ["dashboard"]
+    },
+    //Backend
+    {
+      "name": "domain-colored",
+      "base": "class",
+      "color": "orange-500",
+      "lightColor": "orange-900",
+      "folderNames": ["domain"]
+    },
+    {
+      "name": "infrastructure-colored",
+      "base": "serverless",
+      "color": "gray-600",
+      "lightColor": "gray-800",
+      "folderNames": ["infrastructure"]
+    },
+    {
+      "name": "dtos-colored",
+      "base": "interface",
+      "color": "cyan-600",
+      "lightColor": "cyan-700",
+      "folderNames": ["dtos"]
+    },
+    {
+      "name": "mapper-colored",
+      "base": "class",
+      "color": "purple-400",
+      "lightColor": "purple-700",
+      "folderNames": ["mappers"]
+    }
+  ],
+  "material-icon-theme.files.customClones": [
+    {
+      "name": "repository-colored",
+      "base": "angular",
+      "color": "green-500",
+      "lightColor": "green-800",
+      "fileExtensions": ["repository.ts"]
+    },
+    {
+      "name": "schema-colored",
+      "base": "angular",
+      "color": "pink-500",
+      "lightColor": "pink-700",
+      "fileExtensions": ["schema.ts"]
+    },
+    {
+      "name": "model-colored",
+      "base": "database",
+      "color": "yellow-500",
+      "lightColor": "yellow-300",
+      "fileExtensions": ["model.ts", "entity.ts"]
+    },
+    {
+      "name": "mapper-colored",
+      "base": "angular",
+      "color": "purple-400",
+      "lightColor": "purple-700",
+      "fileExtensions": ["mapper.ts"]
+    }
+  ]
+}

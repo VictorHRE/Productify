@@ -1,0 +1,1 @@
+export { default as UsuarioSequelize } from "./database/sequelize/usuario.model";
